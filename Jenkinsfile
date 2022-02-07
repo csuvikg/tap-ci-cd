@@ -9,7 +9,6 @@ pipeline {
         stage('Run tests') {
             steps {
                 sh './mvnw test'
-                junit 'target/surefire-reports/*.xml'
             }
         }
         stage('Run SonarQube') {
@@ -18,6 +17,12 @@ pipeline {
                     sh "./mvnw sonar:sonar -Dsonar.host.url=$SONARQUBE_HOST -Dsonar.login=$SONARQUBE_TOKEN"
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
