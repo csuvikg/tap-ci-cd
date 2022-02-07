@@ -38,4 +38,28 @@ class NormalizerServiceTest {
         // THEN
         assertEquals("First Second Third Fourth", result);
     }
+
+    @Test
+    void normalize_withSpaces() {
+        // GIVEN
+        String test = "too       much    spaces";
+
+        // WHEN
+        String result = Utils.normalize(test);
+
+        // THEN
+        assertEquals("Too Much Spaces", result);
+    }
+
+    @Test
+    void normalize_withEmptyString() {
+        // GIVEN
+        String test = "";
+
+        // WHEN
+        String result = Utils.normalize(test);
+
+        // THEN
+        assertEquals("", result);
+    }
 }

@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/greet")
 public class GreeterController {
 
+    @GetMapping
+    ResponseEntity<String> greetUser() {
+        return ResponseEntity.ok("Hi user!");
+    }
+
     @GetMapping("/{name}")
-    ResponseEntity<String> greet(@PathVariable String name) {
+    ResponseEntity<String> greetUserByName(@PathVariable String name) {
         return ResponseEntity.ok("Hi, " + Utils.normalize(name) + "!");
     }
 }
