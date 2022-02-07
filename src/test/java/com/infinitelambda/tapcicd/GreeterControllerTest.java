@@ -28,6 +28,6 @@ class GreeterControllerTest {
     void greet_withoutParameter() {
         ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/greet", String.class);
         assertEquals(200, response.getStatusCodeValue());
-        assertEquals("Hi user!", response.getBody());
+        assertEquals("Hi user", response.getBody());
     }
 }
