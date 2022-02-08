@@ -17,6 +17,3 @@ phases:
     commands:
       - ./mvnw test
       - ./mvnw sonar:sonar -Dsonar.host.url=$SONARQUBE_HOST -Dsonar.login=$SONARQUBE_TOKEN
-artifacts:
-  files:
-    - target/app.jar
