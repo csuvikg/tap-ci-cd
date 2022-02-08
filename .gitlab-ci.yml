@@ -1,0 +1,16 @@
+image: openjdk:19-alpine
+
+build-job:
+  stage: build
+  script:
+    - ./mvnw install -Dmaven.test.skip=true
+
+test-junit:
+  stage: test
+  script:
+    - ./mvnw test
+
+test-sonarqube:
+  stage: test
+  script:
+    - ./mvnw sonar:sonar -Dsonar.host.url=$SONARQUBE_HOST -Dsonar.login=$SONARQUBE_TOKEN
